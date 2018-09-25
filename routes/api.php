@@ -14,9 +14,11 @@ $this->delete('categories/{id}', 'Api\CategoryController@delete'); */
 
 
 
+$this->post('auth', 'Auth\AuthApiController@authenticate');
 
 
 $this->group(['prefix' => 'v1', 'namespace' => 'Api\v1'], function(){
+
     //Retornar todos os produtos de uma determinada categoria
     $this->get('categories/{id}/products', 'CategoryController@products');
 
