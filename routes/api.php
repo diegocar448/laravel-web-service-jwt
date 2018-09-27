@@ -13,9 +13,13 @@ $this->delete('categories/{id}', 'Api\CategoryController@delete'); */
 ]); */
 
 
-
+//gerar o token
 $this->post('auth', 'Auth\AuthApiController@authenticate');
 
+//atualizar token
+$this->post('auth-refresh', 'Auth\AuthApiController@refreshToken');
+
+//recuperar usuario passando na header o token
 $this->get('me', 'Auth\AuthApiController@getAuthenticatedUser');
 
 

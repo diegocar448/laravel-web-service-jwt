@@ -121,6 +121,8 @@ return [
     |
     */
 
+    //O tempo em minutos 20160 para a atualização do token
+    //Atualização de token a cada 14 dias
     'refresh_ttl' => env('JWT_REFRESH_TTL', 20160),
 
     /*

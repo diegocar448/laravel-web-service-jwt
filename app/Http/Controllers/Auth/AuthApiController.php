@@ -60,4 +60,27 @@ class AuthApiController extends Controller
         return response()->json(compact('user'));
     }
 
+    //atualizar token
+    public function refreshToken()
+    {
+        //se não passar o token no header então retorna o erro 401
+        if(!$token = JWTAuth::getToken())
+        {
+            //dd("Entrou");
+            return response()->json(['error' => 'token_not_send'], 401);        
+
+           
+        }
+
+         try {
+                $token = JWTAuth::refresh(); 
+            }
+            //retorna caso o token que foi passado seja invalido
+            catch(Tymon\JWTAuth\Exceptions\TokenInvalidException $e){
+                return response()->json(['token_invalid'], $e->getStatusCode());
+            }
+
+            return response()->json(compact('token'));
+    }
+
 }
