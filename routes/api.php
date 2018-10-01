@@ -24,7 +24,12 @@ $this->get('me', 'Auth\AuthApiController@getAuthenticatedUser');
 
 
 
-$this->group(['prefix' => 'v1', 'namespace' => 'Api\v1'], function(){
+$this->group([
+    'prefix' => 'v1', 
+    'namespace' => 'Api\v1',
+    'middleware' => 'auth:api', 
+    //para deixar obrigatorio passar o token valido sempre que tentar acessar a rota
+], function(){
 
     //Retornar todos os produtos de uma determinada categoria
     $this->get('categories/{id}/products', 'CategoryController@products');

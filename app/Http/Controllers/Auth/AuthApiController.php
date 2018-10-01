@@ -75,12 +75,12 @@ class AuthApiController extends Controller
          try {
                 $token = JWTAuth::refresh(); 
             }
-            //retorna caso o token que foi passado seja invalido
-            catch(Tymon\JWTAuth\Exceptions\TokenInvalidException $e){
-                return response()->json(['token_invalid'], $e->getStatusCode());
-            }
+        //retorna caso o token que foi passado seja invalido
+        catch(Tymon\JWTAuth\Exceptions\TokenInvalidException $e){
+            return response()->json(['token_invalid'], $e->getStatusCode());
+        }
 
-            return response()->json(compact('token'));
+        return response()->json(compact('token'));
     }
 
 }
