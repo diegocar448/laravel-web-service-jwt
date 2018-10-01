@@ -27,7 +27,7 @@ $this->get('me', 'Auth\AuthApiController@getAuthenticatedUser');
 $this->group([
     'prefix' => 'v1', 
     'namespace' => 'Api\v1',
-    'middleware' => 'auth:api', 
+    'middleware' => 'jwt.auth', 
     //para deixar obrigatorio passar o token valido sempre que tentar acessar a rota
 ], function(){
 
